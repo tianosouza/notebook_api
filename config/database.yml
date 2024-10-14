@@ -1,0 +1,21 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  host: database
+  username: postgres
+  password: postgres
+  pool: 5
+
+development:
+  <<: *default
+  database: notebook_api_development
+
+test:
+  <<: *default
+  database: notebook_api_test
+
+production:
+  <<: *default
+  database: notebook_api_production
+  username: notebook_api
+  password: <%= ENV["NOTEBOOK_API_DATABASE_PASSWORD"] %>
